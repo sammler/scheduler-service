@@ -1,0 +1,8 @@
+version: "2"
+services:
+  sammler-scheduler:
+    container_name: "sammler-scheduler"
+    build:
+      context: ./../../.
+      dockerfile: ./docker/sammler-scheduler/Dockerfile
+    command: npm run start

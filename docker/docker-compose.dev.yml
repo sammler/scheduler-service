@@ -1,0 +1,18 @@
+version: "2"
+
+services:
+
+  sammler-scheduler:
+    extends:
+      file: ./sammler-scheduler/docker-compose.yml
+      service: sammler-scheduler
+    environment:
+      - SAMMLER_RABBITMQ_URL=amqp://guest:guest@sammler-rabbitmq:5672
+
+  # Todo: link that
+  sammler-rabbitmq:
+      container_name: 'sammler-rabbitmq'
+      image: rabbitmq:3.6.6-management
+      ports:
+        - "8080:15672"
+        - "5672:5672"
