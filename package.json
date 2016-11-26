@@ -20,6 +20,7 @@
   "repository": "sammler/sammler-scheduler",
   "scripts": {
     "start": "node ./src/index.js",
+    "docker-compose-dev": "bash docker-compose --f=./docker/docker-compose.dev.yml up --build",
     "build": "gulp build",
     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha",
     "docs": "verb",
