@@ -1,0 +1,8 @@
+version: "2"
+
+services:
+
+  sammler-scheduler:
+    dockerfile: ./Dockerfile
+    environment:
+      - SAMMLER_RABBITMQ_URL=amqp://guest:guest@sammler-rabbitmq:5672
