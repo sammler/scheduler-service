@@ -9,12 +9,10 @@ function encode(doc) {
   return new Buffer(JSON.stringify(doc));
 }
 
+/**
+ * Post a very basic message `sammler-middleware-github` to s5r-rabbitmq.
+ */
 let j = schedule.scheduleJob( '* * * * *', function() {
-  let d = new Date();
-
-  console.log( 'The answer to life, the universe, and everything!', d.toJSON() );
-
-
   let open = amqp.connect( URL );
   let queue = 'queue';
   open.then( conn => {
@@ -22,9 +20,8 @@ let j = schedule.scheduleJob( '* * * * *', function() {
       .then( (channel) => {
         return Promise.all([
           channel.assertQueue(queue),
-          channel.sendToQueue(queue, encode('sammler_github'), {persistent: true})
+          channel.sendToQueue(queue, encode('sammler-middleware-github'), {persistent: true})
         ]);
       });
   });
-
 } );
