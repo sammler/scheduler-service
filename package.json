@@ -13,18 +13,16 @@
     "url": "https://github.com/stefanwalther",
     "twitter": "waltherstefan"
   },
-  "files": [
-    "/dist"
-  ],
-  "main": "/dist/index.js",
+  "main": "/src/index.js",
   "repository": "sammler/sammler-scheduler",
   "scripts": {
     "start": "node ./src/index.js",
-    "docker-compose-dev": "bash docker-compose --f=./docker/docker-compose.dev.yml up --build",
-    "build": "gulp build",
+    "dc-dev-up": "bash docker-compose --f=./docker/docker-compose.dev.yml up --build",
+    "dc-dev-down": "bash docker-compose --f=./docker/docker-compose.dev.yml down",
     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha",
     "docs": "verb",
-    "lint": "eslint src",
+    "lint:src": "eslint src",
+    "lint:src:fix": "eslint src --fix",
     "lint:test": "eslint test",
     "test": "npm run lint && npm run test:unit && npm run test:integration",
     "test:integration": "npm run lint && mocha './test/integration/**/*.spec.js' --compilers js:babel-core/register --require './test/mocha.conf.js'",
@@ -41,12 +39,9 @@
     "chai": "^3.5.0",
     "del": "^2.2.2",
     "eslint": "^3.1.1",
-    "eslint-config-idiomatic": "^2.1.0",
+    "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-mocha": "^4.0.0",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
     "gulp-format-md": "*",
-    "gulp-sourcemaps": "^1.6.0",
     "mocha": "*",
     "nyc": "^7.0.0"
   },
