@@ -33,20 +33,16 @@
     "node-schedule": "^1.2.0"
   },
   "devDependencies": {
-    "babel-core": "^6.11.4",
-    "babel-plugin-istanbul": "^1.0.3",
-    "babel-preset-es2015": "^6.9.0",
     "chai": "^3.5.0",
-    "del": "^2.2.2",
     "eslint": "^3.1.1",
-    "eslint-config-airbnb": "^13.0.0",
+    "eslint-config-xo-space": "^0.15.0",
     "eslint-plugin-mocha": "^4.0.0",
     "gulp-format-md": "*",
     "mocha": "*",
     "nyc": "^7.0.0"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=7.2"
   },
   "nyc": {
     "sourceMap": false,
