@@ -39,7 +39,8 @@
     "eslint-plugin-mocha": "^4.0.0",
     "gulp-format-md": "*",
     "mocha": "*",
-    "nyc": "^7.0.0"
+    "nyc": "^7.0.0",
+    "sammler-base": "sammler/sammler-base"
   },
   "engines": {
     "node": ">=7.2"
