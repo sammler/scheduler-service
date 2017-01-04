@@ -9,5 +9,5 @@ $ yarn run dc-dev-up
 # $ docker-compose f=./docker-compose.dev.yml run --build
 ```
 
-Hint:  
-The development environment relies on some basic services defined in [sammler-base](https://github.com/sammler/sammler-base)
+
+**Hint:** The development environment relies on some basic services defined in [sammler-base](https://github.com/sammler/sammler-base)
