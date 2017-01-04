@@ -16,9 +16,12 @@ Right now, _sammler-scheduler_ just contains a very basic (and more or less hard
 
 ## Install
 
-```sh
-$ git clone git@github.com:sammler/sammler-scheduler-service.git
-```
+<!-- Install -->
+
+### Prerequisites
+
+* node >=7.0
+* yarn
 
 Install yarn globally:
 
@@ -26,7 +29,15 @@ Install yarn globally:
 $ npm install -g yarn
 ```
 
+### Clone scheduler service
+
+```sh
+$ git clone git@github.com:sammler/sammler-scheduler-service.git
+```
+
 ## Configuration
+
+<!-- Configuration -->
 
 The following environment variables need to be defined for running the service:
 
