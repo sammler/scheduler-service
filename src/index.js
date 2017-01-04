@@ -1,6 +1,6 @@
 const schedule = require('node-schedule');
 const amqp = require('amqplib');
-const URL = process.env.SAMMLER_RABBITMQ_URL || 'amqp://guest:guest@localhost:5672';
+const URL = process.env.SAMMLER_RABBITMQ_URI || 'amqp://guest:guest@localhost:5672';
 
 let rule = new schedule.RecurrenceRule();
 rule.minute = 1;

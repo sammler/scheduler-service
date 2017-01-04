@@ -5,4 +5,4 @@ services:
   sammler-scheduler:
     dockerfile: ./Dockerfile
     environment:
-      - SAMMLER_RABBITMQ_URL=amqp://guest:guest@sammler-rabbitmq:5672
+      - SAMMLER_RABBITMQ_URI=amqp://guest:guest@sammler-rabbitmq:5672
