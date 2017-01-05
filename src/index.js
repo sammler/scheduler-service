@@ -2,7 +2,7 @@ const schedule = require('node-schedule');
 const amqp = require('amqplib');
 const URL = process.env.SAMMLER_RABBITMQ_URI || 'amqp://guest:guest@localhost:5672';
 
-let rule = new schedule.RecurrenceRule();
+const rule = new schedule.RecurrenceRule();
 rule.minute = 1;
 
 function encode(doc) {
@@ -12,19 +12,19 @@ function encode(doc) {
 /**
  * Post a very basic message `sammler-strategy-github` to s5r-rabbitmq.
  */
-let j = schedule.scheduleJob('* * * * *', function () {
-  let open = amqp.connect(URL);
-  let queue = 'queue';
+schedule.scheduleJob('* * * * *', () => {
+  const open = amqp.connect(URL);
+  const queue = 'queue';
   open.then(conn => {
     return conn.createChannel()
-      .then((channel) => {
+      .then(channel => {
         return Promise.all([
           channel.assertQueue(queue),
           channel.sendToQueue(queue, encode('sammler-strategy-github'), {persistent: true})
         ]);
       });
   })
-    .catch( (err) => {
+    .catch(err => {
       console.log('error connecting to RabbitMG', err);
     });
 });
