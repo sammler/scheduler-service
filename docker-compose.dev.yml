@@ -2,7 +2,15 @@ version: "2"
 
 services:
 
+  s5r-rabbitmq:
+    extends:
+      file: ./node_modules/sammler-base/docker-compose.yml
+      service: s5r-rabbitmq
+
   sammler-scheduler:
-    dockerfile: ./Dockerfile
+    build: .
     environment:
-      - SAMMLER_RABBITMQ_URI=amqp://guest:guest@sammler-rabbitmq:5672
+      - SAMMLER_RABBITMQ_URI=amqp://guest:guest@s5r-rabbitmq:5672
+    links:
+      - s5r-rabbitmq
+    command: yarn run start:dev
