@@ -1,5 +1,6 @@
 const schedule = require('node-schedule');
 const amqp = require('amqplib');
+const uuid = require('node-uuid');
 
 const RABBITMQ_URI = process.env.SAMMLER_RABBITMQ_URI || 'amqp://guest:guest@localhost:5672';
 // const JOBS_SERVICE_URI = process.evn.SAMMLER_JOBS_SERVICE_URI ;
@@ -20,14 +21,18 @@ schedule.scheduleJob('* * * * *', () => {
     server: RABBITMQ_URI,
     exchange: {
       type: 'direct',
-      name: 'topics_logs'
+      name: 'github.profile-sync'
     },
     key: 'kern.critical',
     message: {
-      foo: 'bar',
-      bar: 'baz'
+      correlation_id: uuid.v4(),
+      github: {
+        login: 'stefanwalther',
+        profile_id: 669728
+      }
     }
   };
+
   // Todo: Create the job first, so that we also have an Id
   publishMessage(cfg)
     .then(() => {
@@ -37,20 +42,6 @@ schedule.scheduleJob('* * * * *', () => {
       console.warn('err returned', err);
     });
 
-  // const open = amqp.connect(RABBITMQ_URI);
-  // const queue = 'queue';
-  // open.then(conn => {
-  //   return conn.createChannel()
-  //     .then(channel => {
-  //       return Promise.all([
-  //         channel.assertQueue(queue),
-  //         channel.sendToQueue(queue, encode('sammler-strategy-github'), {persistent: true})
-  //       ]);
-  //     });
-  // })
-  //   .catch(err => {
-  //     console.log('error connecting to RabbitMG', err);
-  //   });
 });
 
 // Todo: Validate opts
