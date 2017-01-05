@@ -17,7 +17,7 @@
   "repository": "sammler/sammler-scheduler",
   "scripts": {
     "start": "node ./src/index.js",
-    "start:dev": "nodemon --watch ./src --exec yarn run start",
+    "start:dev": "nodemon -L --watch ./src --exec yarn run start",
     "d-build": "docker build -t sammler/sammler-schedduler .",
     "dc-dev-up": "docker-compose --f=./docker-compose.dev.yml up --build",
     "dc-dev-down": "docker-compose --f=./docker-compose.dev.yml down",

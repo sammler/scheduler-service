@@ -11,6 +11,8 @@ services:
     build: .
     environment:
       - SAMMLER_RABBITMQ_URI=amqp://guest:guest@s5r-rabbitmq:5672
+    volumes:
+      - ./:/home
     links:
       - s5r-rabbitmq
     command: yarn run start:dev
