@@ -17,8 +17,10 @@
   "repository": "sammler/sammler-scheduler",
   "scripts": {
     "start": "node ./src/index.js",
-    "dc-dev-up": "bash docker-compose --f=./docker/docker-compose.dev.yml up --build",
-    "dc-dev-down": "bash docker-compose --f=./docker/docker-compose.dev.yml down",
+    "start:dev": "nodemon --watch ./src --exec yarn run start",
+    "d-build": "docker build -t sammler/sammler-schedduler .",
+    "dc-dev-up": "docker-compose --f=./docker-compose.dev.yml up --build",
+    "dc-dev-down": "docker-compose --f=./docker-compose.dev.yml down",
     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha",
     "docs": "verb",
     "lint:src": "eslint src",

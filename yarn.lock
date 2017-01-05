@@ -1676,8 +1676,8 @@ rx-lite@^3.1.2:
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-3.1.2.tgz#19ce502ca572665f3b647b10939f97fd1615f102"
 
 sammler-base@sammler/sammler-base:
-  version "0.0.1"
-  resolved "https://codeload.github.com/sammler/sammler-base/tar.gz/5ac579f45d3424e6c7b0fdfd848e5657dcdf7bab"
+  version "0.0.2"
+  resolved "https://codeload.github.com/sammler/sammler-base/tar.gz/7aa62c1b5724761f3dc3dd3e177f88e5d35cdad1"
 
 sections@^0.1.9:
   version "0.1.9"

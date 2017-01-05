@@ -1,14 +1,14 @@
-FROM mhart/alpine-node:7.1
+FROM kkarczmarczyk/node-yarn:7.2-slim
+MAINTAINER Stefan Walther <swr.nixda@gmail.com>
 
 ENV HOME /home
 RUN mkdir -p ${HOME}
 
 WORKDIR $HOME
 
-COPY package.json .
-COPY .babelrc .
+COPY package.json yarn.lock ./
 
-RUN npm install
+RUN yarn install
 
 COPY ./src ./src
 
