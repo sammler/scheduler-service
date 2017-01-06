@@ -1,13 +1,13 @@
 {
-  "name": "sammler-scheduler",
+  "name": "sammler-scheduler-service",
   "version": "0.1.4",
   "description": "Scheduler for sammler.",
   "keywords": [
     "sammler"
   ],
-  "homepage": "https://github.com/sammler/sammler-scheduler",
+  "homepage": "https://github.com/sammler/sammler-scheduler-service",
   "bugs": {
-    "url": "https://github.com/sammler/sammler-scheduler/issues"
+    "url": "https://github.com/sammler/sammler-scheduler-service/issues"
   },
   "license": "MIT",
   "author": {
@@ -16,7 +16,7 @@
     "twitter": "waltherstefan"
   },
   "main": "/src/index.js",
-  "repository": "sammler/sammler-scheduler",
+  "repository": "sammler/sammler-scheduler-service",
   "scripts": {
     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha",
     "d-build": "docker build -t sammler/sammler-schedduler .",
