@@ -35,7 +35,9 @@
     "amqplib": "^0.5.1",
     "node-schedule": "^1.2.0",
     "node-uuid": "^1.4.7",
-    "superagent": "^3.3.1"
+    "sammler-jobs-service": "sammler/sammler-jobs-service",
+    "superagent": "^3.3.1",
+    "superagent-promise": "^1.1.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
