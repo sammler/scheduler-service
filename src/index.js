@@ -1,9 +1,11 @@
 const schedule = require('node-schedule');
 const amqp = require('amqplib');
 const uuid = require('node-uuid');
+const request = require('superagent-promise')(require('superagent'), Promise);
 
 const RABBITMQ_URI = process.env.SAMMLER_RABBITMQ_URI || 'amqp://guest:guest@localhost:5672';
-// const JOBS_SERVICE_URI = process.evn.SAMMLER_JOBS_SERVICE_URI ;
+const JOBS_SERVICE_URI = process.env.SAMMLER_JOBS_SERVICE_URI;
+const JOBS_SERVICE_VERSION = 'v1';
 
 const rule = new schedule.RecurrenceRule();
 rule.minute = 1;
@@ -13,7 +15,7 @@ function encode(doc) {
 }
 
 /**
- * Post a very basic message `sammler-strategy-github` to s5r-rabbitmq.
+ * Post a very basic message `github.profile-sync` to s5r-rabbitmq.
  */
 schedule.scheduleJob('* * * * *', () => {
 
@@ -25,7 +27,7 @@ schedule.scheduleJob('* * * * *', () => {
     },
     key: 'kern.critical',
     message: {
-      correlation_id: uuid.v4(),
+      job_id: uuid.v4(),
       github: {
         login: 'stefanwalther',
         profile_id: 669728
@@ -33,13 +35,33 @@ schedule.scheduleJob('* * * * *', () => {
     }
   };
 
-  // Todo: Create the job first, so that we also have an Id
-  publishMessage(cfg)
-    .then(() => {
-      console.log('publish message done');
+  // Todo: We could also just rely on sammler-jobs-service to be available, so just remove the health-check?!
+  return request
+    .get(JOBS_SERVICE_URI + '/health-check')
+    .then(result => {
+      if (result.statusCode !== 200) {
+        return Promise.reject('sammler-job-service not available', result.statusCode);
+      }
+
+      return request
+        .post(JOBS_SERVICE_URI + `/${JOBS_SERVICE_VERSION}/job`)
+        .send({
+          name: cfg.exchange.name,
+          status: 'idle'
+        })
+        .then(() => {
+          return publishMessage(cfg)
+            .then(() => {
+              console.log('publish message done');
+            })
+            .catch(err => {
+              console.warn('err returned', err);
+            });
+        });
+
     })
     .catch(err => {
-      console.warn('err returned', err);
+      console.error('Could not reach job-service health-check', err);
     });
 
 });
