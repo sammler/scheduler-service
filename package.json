@@ -2,7 +2,9 @@
   "name": "sammler-scheduler",
   "version": "0.1.3",
   "description": "Scheduler for sammler.",
-  "keywords": [],
+  "keywords": [
+    "sammler"
+  ],
   "homepage": "https://github.com/sammler/sammler-scheduler",
   "bugs": {
     "url": "https://github.com/sammler/sammler-scheduler/issues"
@@ -50,7 +52,7 @@
     "sammler-base": "sammler/sammler-base"
   },
   "engines": {
-    "node": ">=7.2"
+    "node": ">=7.0"
   },
   "nyc": {
     "sourceMap": false,
