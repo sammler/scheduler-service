@@ -1,6 +1,6 @@
 {
   "name": "sammler-scheduler-service",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Scheduler for sammler.",
   "keywords": [
     "sammler"
@@ -52,7 +52,7 @@
     "sammler-base": "sammler/sammler-base"
   },
   "engines": {
-    "node": ">=7.0"
+    "node": ">=7.2"
   },
   "nyc": {
     "sourceMap": false,
