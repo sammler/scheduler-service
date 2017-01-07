@@ -19,7 +19,7 @@
   "repository": "sammler/sammler-scheduler-service",
   "scripts": {
     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha",
-    "d-build": "docker build -t sammler/sammler-schedduler .",
+    "d-build": "docker build -t sammler/sammler-scheduler-service .",
     "dc-dev-down": "docker-compose --f=./docker-compose.dev.yml down",
     "dc-dev-up": "docker-compose --f=./docker-compose.dev.yml up --build",
     "docs": "verb",
@@ -39,7 +39,8 @@
     "node-uuid": "^1.4.7",
     "sammler-jobs-service": "sammler/sammler-jobs-service",
     "superagent": "^3.3.1",
-    "superagent-promise": "^1.1.0"
+    "superagent-promise": "^1.1.0",
+    "winston": "^2.3.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -52,7 +53,7 @@
     "sammler-base": "sammler/sammler-base"
   },
   "engines": {
-    "node": ">=7.0"
+    "node": ">=7.2"
   },
   "nyc": {
     "sourceMap": false,

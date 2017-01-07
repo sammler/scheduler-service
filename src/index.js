@@ -2,6 +2,7 @@ const schedule = require('node-schedule');
 const amqp = require('amqplib');
 const uuid = require('node-uuid');
 const request = require('superagent-promise')(require('superagent'), Promise);
+const logger = require('./helper/logger');
 
 const RABBITMQ_URI = process.env.SAMMLER_RABBITMQ_URI || 'amqp://guest:guest@localhost:5672';
 const JOBS_SERVICE_URI = process.env.SAMMLER_JOBS_SERVICE_URI;
@@ -52,16 +53,16 @@ schedule.scheduleJob('* * * * *', () => {
         .then(() => {
           return publishMessage(cfg)
             .then(() => {
-              console.log('publish message done');
+              logger.info('publish message done');
             })
             .catch(err => {
-              console.warn('err returned', err);
+              logger.warn('err returned', err);
             });
         });
 
     })
     .catch(err => {
-      console.error('Could not reach job-service health-check', err);
+      logger.error('Could not reach job-service health-check', err);
     });
 
 });
@@ -85,10 +86,10 @@ function publishMessage(opts) {
         .then(ch => {
           ch.assertExchange(opts.exchange.name, opts.exchange.type, {durable: true});
           ch.publish(opts.exchange.name, opts.key, encode(opts.message));
-          console.log(" [x] Sent %s:'%s'", opts.key, JSON.stringify(opts.message, null)); // eslint-disable-line quotes
+          logger.debug(" [x] Sent %s:'%s'", opts.key, JSON.stringify(opts.message, null)); // eslint-disable-line quotes
           setTimeout(() => {
             conn.close();
-            console.log('connection closed');
+            logger.debug('connection closed');
           }, 500);
         });
     });
