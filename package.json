@@ -53,7 +53,7 @@
     "sammler-base": "sammler/sammler-base"
   },
   "engines": {
-    "node": ">=7.2"
+    "node": ">=7.0"
   },
   "nyc": {
     "sourceMap": false,
