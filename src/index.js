@@ -23,7 +23,7 @@ schedule.scheduleJob('* * * * *', () => {
   const cfg = {
     server: RABBITMQ_URI,
     exchange: {
-      type: 'direct',
+      type: 'topic',
       name: 'github.profile-sync'
     },
     key: 'kern.critical',
