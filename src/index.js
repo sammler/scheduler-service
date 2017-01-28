@@ -3,6 +3,7 @@ const amqp = require('amqplib');
 const uuid = require('node-uuid');
 const request = require('superagent-promise')(require('superagent'), Promise);
 const logger = require('./helper/logger');
+const _ = require('lodash');
 
 const RABBITMQ_URI = process.env.SAMMLER_RABBITMQ_URI || 'amqp://guest:guest@localhost:5672';
 const JOBS_SERVICE_URI = process.env.SAMMLER_JOBS_SERVICE_URI;
@@ -26,9 +27,8 @@ schedule.scheduleJob('* * * * *', () => {
       type: 'topic',
       name: 'github.profile-sync'
     },
-    key: 'kern.critical',
+    key: 'sync.requested',
     message: {
-      job_id: uuid.v4(),
       github: {
         login: 'stefanwalther',
         profile_id: 669728
@@ -45,15 +45,18 @@ schedule.scheduleJob('* * * * *', () => {
       }
 
       return request
-        .post(JOBS_SERVICE_URI + `/${JOBS_SERVICE_VERSION}/job`)
+        .post(JOBS_SERVICE_URI + `/${JOBS_SERVICE_VERSION}/jobs`)
         .send({
           name: cfg.exchange.name,
-          status: 'idle'
+          details: cfg.message
         })
-        .then(() => {
-          return publishMessage(cfg)
+        .then(result => {
+          logger.silly('New job', result.body);
+          const msg = _.clone(cfg);
+          msg.message.job_id = result.body._id;
+          return publishMessage(msg)
             .then(() => {
-              logger.info('publish message done');
+              logger.info('publish message done', msg.job_id);
             })
             .catch(err => {
               logger.warn('err returned', err);
@@ -61,14 +64,17 @@ schedule.scheduleJob('* * * * *', () => {
         });
 
     })
+
     .catch(err => {
-      logger.error('Could not reach job-service health-check', err);
+      console.log(err);
+      logger.error('Could not post a new job', err);
     });
 
 });
 
 // Todo: Validate opts
 // Todo: Set some default values for opts
+// Todo: Break out to external library (sammler/amqlib-sugar)
 /**
  * Post a message to RabbitMq.
  * @param {object} opts - Configuration to use to publish a message.
@@ -89,7 +95,8 @@ function publishMessage(opts) {
           logger.debug(" [x] Sent %s:'%s'", opts.key, JSON.stringify(opts.message, null)); // eslint-disable-line quotes
           setTimeout(() => {
             conn.close();
-            logger.debug('connection closed');
+            logger.debug('publishMessage: Connection closed');
+
           }, 500);
         });
     });

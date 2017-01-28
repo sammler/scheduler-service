@@ -5,7 +5,7 @@ let logger = null;
 if (process.env.NODE_ENV === 'test') {
   logger = new (Winston.Logger)({
     transports: [
-      new (Winston.transports.File)({filename: 'test.log'})
+      new (Winston.transports.File)({filename: 'test-errors.log'})
     ]
   });
 } else {

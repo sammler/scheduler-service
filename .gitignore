@@ -2,6 +2,7 @@
 .cache
 .config
 .yarn
+test-errors.log
 
 # always ignore files
 *.DS_Store
