@@ -36,14 +36,14 @@
     "test:unit": "yarn run lint:test && mocha './test/unit/**/*.spec.js' --require './test/mocha.conf.js'"
   },
   "dependencies": {
+    "amqp-winston": "^1.0.7",
     "amqplib": "^0.5.1",
     "lodash": "^4.17.4",
     "node-schedule": "^1.2.0",
-    "node-uuid": "^1.4.7",
-    "sammler-jobs-service": "sammler/sammler-jobs-service",
+    "sammler-nodelib-logger": "^0.2.1",
     "superagent": "^3.3.1",
     "superagent-promise": "^1.1.0",
-    "winston": "^2.3.0"
+    "winster": "^0.2.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -56,7 +56,7 @@
     "sammler-base": "sammler/sammler-base"
   },
   "engines": {
-    "node": ">=7.0"
+    "node": ">=7.2"
   },
   "nyc": {
     "sourceMap": false,
@@ -82,5 +82,8 @@
       "verb",
       "verb-readme-generator"
     ]
+  },
+  "winster": {
+    "configFile": "./src/helper/winster-configuration.js"
   }
 }

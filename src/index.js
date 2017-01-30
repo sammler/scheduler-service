@@ -1,8 +1,7 @@
 const schedule = require('node-schedule');
 const amqp = require('amqplib');
-const uuid = require('node-uuid');
 const request = require('superagent-promise')(require('superagent'), Promise);
-const logger = require('./helper/logger');
+const logger = require('winster').instance();
 const _ = require('lodash');
 
 const RABBITMQ_URI = process.env.SAMMLER_RABBITMQ_URI || 'amqp://guest:guest@localhost:5672';
@@ -17,10 +16,17 @@ function encode(doc) {
 }
 
 /**
- * Post a very basic message `github.profile-sync` to s5r-rabbitmq.
+ * Posts every minute a very basic message `github.profile-sync` to s5r-rabbitmq.
  */
 schedule.scheduleJob('* * * * *', () => {
 
+  //triggerProfileSync();
+
+});
+
+setInterval(triggerProfileSync, 20000);
+
+function triggerProfileSync() {
   const cfg = {
     server: RABBITMQ_URI,
     exchange: {
@@ -51,7 +57,7 @@ schedule.scheduleJob('* * * * *', () => {
           details: cfg.message
         })
         .then(result => {
-          logger.silly('New job', result.body);
+          logger.trace('New job', result.body);
           const msg = _.clone(cfg);
           msg.message.job_id = result.body._id;
           return publishMessage(msg)
@@ -66,11 +72,9 @@ schedule.scheduleJob('* * * * *', () => {
     })
 
     .catch(err => {
-      console.log(err);
       logger.error('Could not post a new job', err);
     });
-
-});
+}
 
 // Todo: Validate opts
 // Todo: Set some default values for opts
