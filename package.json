@@ -38,21 +38,22 @@
   "dependencies": {
     "amqp-winston": "^1.0.7",
     "amqplib": "^0.5.1",
+    "amqplib-sugar": "sammler/amqplib-sugar",
     "lodash": "^4.17.4",
     "node-schedule": "^1.2.0",
     "sammler-nodelib-logger": "^0.2.1",
-    "superagent": "^3.3.1",
+    "superagent": "^3.4.1",
     "superagent-promise": "^1.1.0",
-    "winster": "^0.2.0"
+    "winster": "^0.2.5"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "eslint": "^3.1.1",
+    "eslint": "^3.14.1",
     "eslint-config-sammler": "sammler/eslint-config-sammler",
-    "eslint-plugin-mocha": "^4.0.0",
+    "eslint-plugin-mocha": "^4.8.0",
     "gulp-format-md": "*",
     "mocha": "*",
-    "nyc": "^7.0.0",
+    "nyc": "^10.1.2",
     "sammler-base": "sammler/sammler-base"
   },
   "engines": {
