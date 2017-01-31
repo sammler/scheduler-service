@@ -1,5 +1,6 @@
 const schedule = require('node-schedule');
 const amqp = require('amqplib');
+const amqpSugar = require('amqplib-sugar');
 const request = require('superagent-promise')(require('superagent'), Promise);
 const logger = require('winster').instance();
 const _ = require('lodash');
