@@ -15,5 +15,5 @@ $ npm install -g yarn
 ### Clone scheduler service
 
 ```sh
-$ git clone git@github.com:sammler/sammler-scheduler-service.git
+$ git clone git@github.com:sammler/scheduler-service.git
 ```

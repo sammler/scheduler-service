@@ -2,7 +2,7 @@
 
 > Scheduler for sammler.
 
-[![CircleCI](https://circleci.com/gh/sammler/sammler-scheduler-service/tree/master.svg?style=svg)](https://circleci.com/gh/sammler/sammler-scheduler-service/tree/master)
+[![CircleCI](https://circleci.com/gh/sammler/scheduler-service/tree/master.svg?style=svg)](https://circleci.com/gh/sammler/scheduler-service/tree/master)
 
 ## Purpose
 
@@ -34,7 +34,7 @@ $ npm install -g yarn
 ### Clone scheduler service
 
 ```sh
-$ git clone git@github.com:sammler/sammler-scheduler-service.git
+$ git clone git@github.com:sammler/scheduler-service.git
 ```
 
 ## Configuration

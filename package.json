@@ -1,13 +1,13 @@
 {
-  "name": "sammler-scheduler-service",
+  "name": "scheduler-service",
   "version": "0.3.2",
   "description": "Scheduler for sammler.",
   "keywords": [
     "sammler"
   ],
-  "homepage": "https://github.com/sammler/sammler-scheduler-service",
+  "homepage": "https://github.com/sammler/scheduler-service",
   "bugs": {
-    "url": "https://github.com/sammler/sammler-scheduler-service/issues"
+    "url": "https://github.com/sammler/scheduler-service/issues"
   },
   "license": "MIT",
   "author": {
@@ -16,10 +16,10 @@
     "twitter": "waltherstefan"
   },
   "main": "/src/index.js",
-  "repository": "sammler/sammler-scheduler-service",
+  "repository": "sammler/scheduler-service",
   "scripts": {
     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha",
-    "d-build": "docker build -t local/sammler-scheduler-service .",
+    "d-build": "docker build -t local/scheduler-service .",
     "dc-dev-down": "docker-compose --f=./docker-compose.dev.yml down",
     "dc-dev-up": "docker-compose --f=./docker-compose.dev.yml up --build",
     "docs": "verb",
