@@ -46,6 +46,15 @@ RUN  npm run lint && npm run test
 # --------------------------------------
 FROM node:8.4.0-alpine as RELEASE
 
+ARG PORT=3000
+ENV PORT=$PORT
+
+ENV HOME /home
+RUN mkdir -p $HOME
+WORKDIR $HOME
+
+COPY package.json package-lock.json ./
+
 # copy production node_modules
 COPY --from=dependencies /home/prod_node_modules ./node_modules
 COPY /src ./src/
