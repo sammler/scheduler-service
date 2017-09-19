@@ -44,7 +44,7 @@ RUN  npm run lint && npm run test
 # --------------------------------------
 #                 RELEASE
 # --------------------------------------
-FROM BASE as RELEASE
+FROM node:8.4.0-alpine as RELEASE
 
 # copy production node_modules
 COPY --from=dependencies /home/prod_node_modules ./node_modules
