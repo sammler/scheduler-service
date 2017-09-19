@@ -12,10 +12,9 @@ services:
       file: ./node_modules/sammler-base/docker-compose.yml
       service: s5r-rabbitmq
 
-  # Todo: Run from the docker-hub image in the long run, right now just use nodemon based watcher
   jobs-service:
     build:
-      context: ./node_modules/jobs-service/services/api
+      context: ./node_modules/jobs-service
     environment:
       - WAIT_COMMAND=[ $$(curl --write-out %{http_code} --silent --output /dev/null http://s5r-mongo:27017) = 200 ]
       - WAIT_START_CMD=yarn run start:dev
@@ -24,10 +23,11 @@ services:
       - PORT=3003
       - SAMMLER_DB_JOBS_URI=mongodb://s5r-mongo:27017/jobs
     volumes:
-      - ./node_modules/jobs-service/services/api/:/home
+      - ./node_modules/jobs-service/:/home
     links:
       - s5r-mongo
     command: sh wait_to_start.sh
+
 
   scheduler-service:
     build: .

@@ -1,6 +1,7 @@
 const schedule = require('node-schedule');
 const amqp = require('amqplib');
-const amqpSugar = require('amqplib-sugar');
+// eslint-next-line capitalized-comments
+// const amqpSugar = require('amqplib-sugar');
 const request = require('superagent-promise')(require('superagent'), Promise);
 const logger = require('winster').instance();
 const _ = require('lodash');
@@ -8,6 +9,9 @@ const _ = require('lodash');
 const RABBITMQ_URI = process.env.SAMMLER_RABBITMQ_URI || 'amqp://guest:guest@localhost:5672';
 const JOBS_SERVICE_URI = process.env.SAMMLER_JOBS_SERVICE_URI;
 const JOBS_SERVICE_VERSION = 'v1';
+
+// Feature Flags
+const FF_MVP_1 = process.env.FF_MVP_1 || false;
 
 const rule = new schedule.RecurrenceRule();
 rule.minute = 1;
@@ -21,7 +25,10 @@ function encode(doc) {
  */
 schedule.scheduleJob('* * * * *', () => {
 
-  //triggerProfileSync();
+  console.log('FF_MVP_1', FF_MVP_1);
+
+  // eslint-next-line capitalized-comments
+  // triggerProfileSync();
 
 });
 
@@ -48,7 +55,7 @@ function triggerProfileSync() {
     .get(JOBS_SERVICE_URI + '/health-check')
     .then(result => {
       if (result.statusCode !== 200) {
-        return Promise.reject('sammler-job-service not available', result.statusCode);
+        return Promise.reject('sammler-job-service not available', result.statusCode); // eslint-disable-line prefer-promise-reject-errors
       }
 
       return request
