@@ -47,10 +47,10 @@ function pubHeartBeat() {
 
   return amqpSugar.publishMessage(msg)
     .then(() => {
-      logger.info('publish message done', msg.job_id);
+      logger.verbose('Successfully published a message to RabbitMQ', msg.job_id, msg);
     })
     .catch(err => {
-      logger.warn('err returned', err);
+      logger.warn('Error returned from RabbitMQ', err);
     });
 
 }

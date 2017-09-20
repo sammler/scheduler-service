@@ -24,16 +24,14 @@ class AmqpSugarLib {
           .then(ch => {
             ch.assertExchange(opts.exchange.name, opts.exchange.type, {durable: true});
             ch.publish(opts.exchange.name, opts.key, encode(opts.message));
-            // Todo: console.log(' [x] Sent %s:"%s"', opts.key, JSON.stringify(opts.message, null));
-            logger.trace(` [x] Sent ${opts.key}: ${JSON.stringify(opts.message, null)}`);
+            logger.verbose(` [x] Sent ${opts.key}: ${JSON.stringify(opts.message, null)}`);
             setTimeout(() => {
               conn.close();
-              logger.trace('publishMessage: Connection closed');
+              logger.verbose('publishMessage: Connection closed');
             }, 500);
           });
       });
   }
-
 }
 
 module.exports = AmqpSugarLib;
