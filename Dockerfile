@@ -35,7 +35,7 @@ RUN npm install
 FROM dependencies AS TEST
 
 COPY .eslintrc.json .
-COPY /src ./src/
+COPY /app ./app/
 COPY /test ./test/
 
 RUN  npm run lint && npm run test
@@ -57,7 +57,7 @@ COPY package.json package-lock.json ./
 
 # copy production node_modules
 COPY --from=dependencies /home/prod_node_modules ./node_modules
-COPY /src ./src/
+COPY /app ./app/
 
 EXPOSE $PORT
 

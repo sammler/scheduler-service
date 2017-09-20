@@ -15,7 +15,6 @@
     "url": "https://github.com/stefanwalther",
     "twitter": "waltherstefan"
   },
-  "main": "/src/index.js",
   "repository": "sammler/scheduler-service",
   "scripts": {
     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha",
@@ -27,12 +26,12 @@
     "docs": "docker run --rm -v ${PWD}:/opt/verb stefanwalther/verb",
     "lint": "npm run lint:src && npm run lint:test",
     "lint:fix": "npm run lint:src:fix && npm run lint:test:fix",
-    "lint:src": "eslint src",
-    "lint:src:fix": "eslint src --fix",
+    "lint:src": "eslint app",
+    "lint:src:fix": "eslint app --fix",
     "lint:test": "eslint test",
     "lint:test:fix": "eslint test --fix",
-    "start": "node ./src/index.js",
-    "start:watch": "npm install nodemon -g && nodemon -L --watch ./src --exec npm run start",
+    "start": "node ./app/index.js",
+    "start:watch": "npm install nodemon -g && nodemon -L --watch ./app --exec npm run start",
     "test": "npm run test:unit && npm run test:integration",
     "test:integration": "npm run lint:test && mocha './test/integration/**/*.spec.js' --require './test/mocha.conf.js'",
     "test:unit": "npm run lint:test && mocha './test/unit/**/*.spec.js' --require './test/mocha.conf.js'"
@@ -88,6 +87,6 @@
     ]
   },
   "winster": {
-    "configFile": "./src/helper/winster-configuration.js"
+    "configFile": "./app/helper/winster-configuration.js"
   }
 }

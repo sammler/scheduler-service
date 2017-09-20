@@ -40,4 +40,4 @@ services:
     links:
       - s5r-rabbitmq
       - s5r-mongo
-    command: yarn run start:dev
+    command: npm run start:watch

@@ -32,8 +32,10 @@ schedule.scheduleJob('* * * * *', () => {
 
 });
 
-setInterval(triggerProfileSync, 20000);
+// eslint-next-line capitalized-comments
+// setInterval(triggerProfileSync, 20000);
 
+// eslint-disable-next-line no-unused-vars
 function triggerProfileSync() {
   const cfg = {
     server: RABBITMQ_URI,
