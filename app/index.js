@@ -26,6 +26,7 @@ function encode(doc) {
 schedule.scheduleJob('* * * * *', () => {
 
   console.log('FF_MVP_1', FF_MVP_1);
+  console.log('And just another echo');
 
   // eslint-next-line capitalized-comments
   // triggerProfileSync();
