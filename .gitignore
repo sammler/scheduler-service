@@ -16,6 +16,7 @@ coverage
 # npm
 node_modules
 npm-debug.log
+.npm
 
 # yarn
 yarn-error.log
