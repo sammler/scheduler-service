@@ -35,6 +35,7 @@
     "start:watch": "npm install nodemon -g && nodemon -L --watch ./src --config ./src/nodemon.json --exec npm run start",
     "test": "npm run test:unit && npm run test:integration",
     "test:integration": "npm run lint:test && mocha './test/integration/**/*.spec.js' --require './test/mocha.conf.js'",
+    "test-coverage": "istanbul cover node_modules/.bin/_mocha  --require ./test/mocha.conf.js -- -- -u exports -R spec test/**/* && codecov",
     "test:unit": "npm run lint:test && mocha './test/unit/**/*.spec.js' --require './test/mocha.conf.js'"
   },
   "dependencies": {
@@ -54,9 +55,11 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "codecov": "^2.3.0",
     "eslint": "^4.8.0",
     "eslint-config-space-single": "^0.2.0",
     "eslint-plugin-mocha": "^4.11.0",
+    "istanbul": "^0.4.5",
     "jobs-service": "github:sammler/jobs-service",
     "mocha": "*",
     "nyc": "^11.2.1",
