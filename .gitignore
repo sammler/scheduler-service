@@ -1,8 +1,9 @@
 # project
 .cache
 .config
-.yarn
+.npm
 test-errors.log
+.ash_history
 
 # always ignore files
 *.DS_Store

@@ -21,14 +21,7 @@ Right now, _sammler-scheduler_ just contains a very basic (and more or less hard
 
 ### Prerequisites
 
-- node >=7.0
-- yarn
-
-Install yarn globally:
-
-```sh
-$ npm install -g yarn
-```
+- node >=6.8.0.0
 
 ### Clone scheduler service
 
@@ -41,6 +34,7 @@ $ git clone git@github.com:sammler/scheduler-service.git
 
 The following environment variables need to be defined for running the service:
 
+- `SAMMLER_SCHEDULER_SERVICE__LOAD_FROM_FILE` - If set to true, the config files will be loaded from the directory `/opts
 - `SAMMLER_RABBITMQ_URI`
 - `SAMMLER_JOBS_SERVICE_URI`
 - `SAMMLER_LOG_SERVICE_URI`
@@ -51,7 +45,7 @@ The following environment variables need to be defined for running the service:
 Run the development environment:
 
 ```sh
-$ npm run dc-dev-up
+$ npm run dc-up:dev
 
 # Just a shortcut for 
 # $ docker-compose f=./docker-compose.dev.yml run --build

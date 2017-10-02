@@ -32,11 +32,11 @@ services:
   scheduler-service:
     build: .
     environment:
+      - LOAD_JOBS_FROM_FILE=true
       - SAMMLER_RABBITMQ_URI=amqp://guest:guest@s5r-rabbitmq:5672
       - SAMMLER_JOBS_SERVICE_URI=http://jobs-service:3003
-      - FF_MVP_1=true
     volumes:
-      - ./:/home
+      - ./:/opt/scheduler-service
     links:
       - s5r-rabbitmq
       - s5r-mongo

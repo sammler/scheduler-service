@@ -4,12 +4,12 @@
 # We need full node as we need git to download
 # from some GitHub repos as of now.
 # --------------------------------------
-FROM node:8.4.0 as BASE
+FROM node:8.6.0 as BASE
 
 ARG PORT=3000
 ENV PORT=$PORT
 
-ENV HOME /home
+ENV HOME /opt/scheduler-service
 RUN mkdir -p $HOME
 WORKDIR $HOME
 
@@ -44,19 +44,19 @@ RUN  npm run lint && npm run test
 # --------------------------------------
 #                 RELEASE
 # --------------------------------------
-FROM node:8.4.0-alpine as RELEASE
+FROM node:8.6.0-alpine as RELEASE
 
 ARG PORT=3000
 ENV PORT=$PORT
 
-ENV HOME /home
+ENV HOME /opt/scheduler-service
 RUN mkdir -p $HOME
 WORKDIR $HOME
 
 COPY index.js package.json package-lock.json ./
 
 # copy production node_modules
-COPY --from=dependencies /home/prod_node_modules ./node_modules
+COPY --from=dependencies $HOME/prod_node_modules ./node_modules
 COPY /src ./src/
 
 EXPOSE $PORT

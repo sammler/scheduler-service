@@ -3,14 +3,8 @@
 
 ### Prerequisites
 
-- node >=7.0
-- yarn
+- node >=6.8.0.0
 
-Install yarn globally:
-
-```sh
-$ npm install -g yarn
-```
 
 ### Clone scheduler service
 
