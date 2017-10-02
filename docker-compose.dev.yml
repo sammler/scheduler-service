@@ -40,4 +40,4 @@ services:
     links:
       - s5r-rabbitmq
       - s5r-mongo
-    command: npm run start:watch
+    command: ["npm", "run", "start:watch"]

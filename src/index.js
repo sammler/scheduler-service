@@ -1,5 +1,5 @@
 const schedule = require('node-schedule');
-const amqpSugar = require('./lib/amqplib-sugar');
+const amqpSugar = require('amqplib-sugar');
 const request = require('superagent-promise')(require('superagent'), Promise);
 const logger = require('winster').instance();
 const _ = require('lodash');
@@ -19,12 +19,17 @@ rule.minute = 1;
  */
 schedule.scheduleJob('* * * * *', () => {
 
-  pubHeartBeat();
+  // Todo: Just some test comment
+  // pubHeartBeat();
 
   // eslint-next-line capitalized-comments
   // triggerProfileSync();
 
 });
+
+setInterval(() => {
+  pubHeartBeat();
+}, 10000);
 
 function pubHeartBeat() {
 
@@ -38,19 +43,27 @@ function pubHeartBeat() {
     message: {
       foo: 'bar',
       bar: 'baz'
+    },
+    retry_behavior: {
+      enabled: true,
+      retries: 10,
+      interval: 1000
     }
   };
 
+  // Todo: evaluate if needed
   // Just to make it easier afterwards
   let msg = _.clone(cfg);
   msg.job_id = undefined;
 
   return amqpSugar.publishMessage(msg)
     .then(() => {
+      // Todo(correlation_id)
       logger.verbose('Successfully published a message to RabbitMQ', msg.job_id, msg);
     })
     .catch(err => {
-      logger.warn('Error returned from RabbitMQ', err);
+      // Todo(correlation_id)
+      logger.error('Message could not be published to RabbitMQ', err);
     });
 
 }
@@ -98,7 +111,7 @@ function triggerProfileSync() {
               logger.info('publish message done', msg.job_id);
             })
             .catch(err => {
-              logger.warn('err returned', err);
+              logger.error('err returned', err);
             });
         });
     })
