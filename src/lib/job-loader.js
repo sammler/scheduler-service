@@ -32,7 +32,7 @@ class JobLoader {
   }
 
   static _initIntervalJob(job) {
-    logger.verbose('init interval job', job.name);
+    logger.verbose('Init interval job', job.name);
     setInterval(() => {
 
       let msg = JobLoader._getJobMsg(job);
@@ -67,12 +67,12 @@ class JobLoader {
     let msg = _.clone(job);
     msg = _.defaults(msg, config.defaults);
     let replaceWith = {
-      correlation_id: uuid()
+      correlation_id: uuid(),
+      now: Date.now()
     };
     msg.server = config.RABBITMQ_URI;
     msg = templater(msg, replaceWith);
 
-    logger.verbose('msg', msg);
     return msg;
   }
 

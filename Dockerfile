@@ -38,8 +38,11 @@ COPY .eslintrc.json .
 COPY /src ./src/
 COPY /test ./test/
 
-RUN  npm run lint && npm run test
+#ENV MOCHA_FILE=/junit/test-results.xml
+#RUN mkdir /junit
+RUN npm run lint && npm run test
 
+CMD ["/bin/bash"]
 
 # --------------------------------------
 #                 RELEASE

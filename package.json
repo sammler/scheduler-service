@@ -34,9 +34,9 @@
     "start": "node ./src/index.js",
     "start:watch": "npm install nodemon -g && nodemon -L --watch ./src --config ./src/nodemon.json --exec npm run start",
     "test": "npm run test:unit && npm run test:integration",
-    "test:integration": "npm run lint:test && mocha './test/integration/**/*.spec.js' --require './test/mocha.conf.js'",
+    "test:integration": "npm run lint:test && mocha './test/integration/**/*.spec.js' --require './test/mocha.conf.js' --reporter 'mocha-junit-reporter'",
     "test-coverage": "istanbul cover node_modules/.bin/_mocha  --require ./test/mocha.conf.js -- -- -u exports -R spec test/**/* && codecov",
-    "test:unit": "npm run lint:test && mocha './test/unit/**/*.spec.js' --require './test/mocha.conf.js'"
+    "test:unit": "npm run lint:test && mocha './test/unit/**/*.spec.js' --require './test/mocha.conf.js' --reporter 'mocha-junit-reporter'"
   },
   "dependencies": {
     "agenda": "^1.0.0",
@@ -46,6 +46,7 @@
     "js-yaml": "^3.10.0",
     "json-templater": "^1.1.0",
     "lodash": "^4.17.4",
+    "mocha-junit-reporter": "^1.14.0",
     "node-schedule": "^1.2.5",
     "sammler-nodelib-logger": "^0.2.1",
     "superagent": "^3.6.2",
