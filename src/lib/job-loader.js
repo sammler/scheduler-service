@@ -68,7 +68,7 @@ class JobLoader {
     msg = _.defaults(msg, config.defaults);
     let replaceWith = {
       correlation_id: uuid(),
-      now: Date.now()
+      now: JSON.stringify(new Date())
     };
     msg.server = config.RABBITMQ_URI;
     msg = templater(msg, replaceWith);
