@@ -6,7 +6,7 @@
 # --------------------------------------
 FROM node:8.6.0 as BASE
 
-ARG PORT=3000
+ARG PORT=3001
 ENV PORT=$PORT
 
 ENV HOME /opt/scheduler-service
@@ -49,7 +49,7 @@ CMD ["/bin/bash"]
 # --------------------------------------
 FROM node:8.6.0-alpine as RELEASE
 
-ARG PORT=3000
+ARG PORT=3001
 ENV PORT=$PORT
 
 ENV HOME /opt/scheduler-service

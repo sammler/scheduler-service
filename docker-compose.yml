@@ -32,6 +32,7 @@ services:
   scheduler-service:
     build: .
     environment:
+      - PORT=3001
       - SAMMLER_RABBITMQ_URI=amqp://guest:guest@s5r-rabbitmq:5672
       - SAMMLER_JOBS_SERVICE_URI=http://jobs-service:3003
       - FF_MVP_1=true

@@ -5,6 +5,7 @@ module.exports = {
   JOBS_SERVICE_VERSION: 'v1',
   LOAD_JOBS_FROM_FILE: process.env.LOAD_JOBS_FROM_FILE || false,
   nodeEnv: process.NODE_ENV || 'development',
+  PORT: process.env.PORT || 3001,
   defaults: {
     // RabbitMQ default retry-behavior (see amqplib-sugar)
     retry_behavior: {
