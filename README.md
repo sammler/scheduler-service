@@ -12,24 +12,8 @@ _scheduler_service_ publishes messages to RabbitMQ based on scheduled events (jo
 
 It is also the responsibility of _sammler-scheduler_ to store the initial state of jobs (using _sammler-jobs-service_).
 
-## Work in progress
+## Install & Configuration
 
-Right now, _scheduler-service_ just contains a very basic (and more or less hardcoded) solution, to get messages into the system.
-
-## Install 
-<!-- Install -->
-
-### Prerequisites
-
-- node >=6.8.0.0
-
-### Clone scheduler service
-
-```sh
-$ git clone git@github.com:sammler/scheduler-service.git
-```
-
-## Configuration
 See [sammler/docs/services/scheduler-service](https://sammler.github.io/docs/services/scheduler-service/)
 
 ## Build & Run
