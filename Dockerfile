@@ -1,9 +1,9 @@
-# --------------------------------------
-#               BASE NODE
-# --
-# We need full node as we need git to download
-# from some GitHub repos as of now.
-# --------------------------------------
+## -------------------------------------------------------------------
+##                            BASE IMAGE
+## ~~
+## We need full node as we need git to download from some GitHub repos
+## as of now.
+## -------------------------------------------------------------------
 FROM node:8.6.0 as BASE
 
 ARG PORT=3001
@@ -15,22 +15,23 @@ WORKDIR $HOME
 
 COPY package.json package-lock.json ./
 
-# --------------------------------------
-#              DEPENDENCIES
-# --------------------------------------
+## -------------------------------------------------------------------
+##                            DEPENDENCIES
+## -------------------------------------------------------------------
 FROM BASE as DEPENDENCIES
 
-RUN npm install --only=production
+RUN npm install --silent --only=production
 
 # copy production node_modules aside
 RUN cp -R node_modules prod_node_modules
 
 # install ALL node_modules, including 'devDependencies'
-RUN npm install
+RUN npm install --silent
 
-# --------------------------------------
-#                  TEST
-# --------------------------------------
+
+## -------------------------------------------------------------------
+##                                TEST
+## -------------------------------------------------------------------
 # run linters, setup and tests
 FROM dependencies AS TEST
 
@@ -44,9 +45,9 @@ RUN npm run lint && npm run test
 
 CMD ["/bin/bash"]
 
-# --------------------------------------
-#                 RELEASE
-# --------------------------------------
+## -------------------------------------------------------------------
+##                              RELEASE
+## -------------------------------------------------------------------
 FROM node:8.6.0-alpine as RELEASE
 
 ARG PORT=3001

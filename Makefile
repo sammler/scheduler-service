@@ -9,3 +9,7 @@ help:						## Show this help.
 gen-readme:			## Generate the README.md (using docker-verb)
 	npm run docs
 .PHONY: gen-readme
+
+build:
+	docker build -t sammlerio/scheduler-service .
+.PHONY: build

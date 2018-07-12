@@ -2,6 +2,7 @@
 .cache
 .config
 .npm
+package-lock.json
 test-errors.log
 .ash_history
 
