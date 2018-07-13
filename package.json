@@ -57,9 +57,9 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "codecov": "^3.0.0",
-    "eslint": "^4.8.0",
+    "eslint": "^5.1.0",
     "eslint-config-space-single": "^0.3.0",
-    "eslint-plugin-mocha": "^4.11.0",
+    "eslint-plugin-mocha": "^5.1.0",
     "istanbul": "^0.4.5",
     "jobs-service": "github:sammler/jobs-service",
     "mocha": "*",
