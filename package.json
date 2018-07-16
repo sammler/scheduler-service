@@ -59,7 +59,7 @@
     "codecov": "3.0.4",
     "eslint": "5.1.0",
     "eslint-config-space-single": "0.3.3",
-    "eslint-plugin-mocha": "4.12.1",
+    "eslint-plugin-mocha": "5.1.0",
     "istanbul": "0.4.5",
     "jobs-service": "github:sammler/jobs-service",
     "mocha": "*",
