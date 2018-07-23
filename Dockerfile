@@ -4,7 +4,7 @@
 ## We need full node as we need git to download from some GitHub repos
 ## as of now.
 ## -------------------------------------------------------------------
-FROM node:8.6.0 as BASE
+FROM node:8.11.3 as BASE
 
 ARG PORT=3001
 ENV PORT=$PORT
@@ -48,7 +48,7 @@ CMD ["/bin/bash"]
 ## -------------------------------------------------------------------
 ##                              RELEASE
 ## -------------------------------------------------------------------
-FROM node:8.6.0-alpine as RELEASE
+FROM node:8.11.3-alpine as RELEASE
 
 ARG PORT=3001
 ENV PORT=$PORT
