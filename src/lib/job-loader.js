@@ -12,11 +12,6 @@ const uuid = require('uuid/v1');
 // Todo: validate params, e.g. testing if job.name is there ... (probably depending on the strategy)
 class JobLoader {
 
-  // Todo: Just some dummy jobs to test
-  static dummy() {
-
-  }
-
   static fromFile() {
     const filePath = path.join(__dirname, './../config/jobs/jobs.yml');
     if (fs.existsSync(filePath)) {
@@ -58,7 +53,7 @@ class JobLoader {
   }
 
   /**
-   * Clean the parameters to pass in to RabbitMQ, extending with some defaults.
+   * Clean the parameters to pass in to NATS, extending with some defaults.
    * Todo: Add validation of the settings here ...
    * @param job
    * @private
@@ -67,7 +62,7 @@ class JobLoader {
     let msg = _.clone(job);
     msg = _.defaults(msg, config.defaults);
     let replaceWith = {
-      correlation_id: uuid(),
+      trace_id: uuid(),
       now: JSON.stringify(new Date())
     };
     msg.server = config.RABBITMQ_URI;
@@ -87,10 +82,7 @@ class JobLoader {
         logger.error('Message could not be published to RabbitMQ', err);
       });
   }
-
-  static fromService() {
-
-  }
+°
 
 }
 

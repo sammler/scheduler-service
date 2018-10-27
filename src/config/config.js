@@ -1,6 +1,7 @@
 
 module.exports = {
   RABBITMQ_URI: process.env.RABBITMQ_URI || 'amqp://guest:guest@localhost:5672',
+  NATS_URI: process.env.NAT_URI,
   JOBS_SERVICE_URI: process.env.JOBS_SERVICE_URI,
   JOBS_SERVICE_VERSION: 'v1',
   LOAD_JOBS_FROM_FILE: process.env.LOAD_JOBS_FROM_FILE || false,

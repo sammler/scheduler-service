@@ -3,10 +3,7 @@
 Run the development environment:
 
 ```sh
-$ npm run dc-up:dev
-
-# Just a shortcut for 
-# $ docker-compose f=./docker-compose.dev.yml run
+$ make up-deps
 ```
 
 Run the development environment (+ enforce rebuilding):

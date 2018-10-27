@@ -15,8 +15,6 @@ if (config.LOAD_JOBS_FROM_FILE) {
   jobLoader.fromFile();
 }
 
-jobLoader.fromService();
-
 const rule = new schedule.RecurrenceRule();
 rule.minute = 1;
 
