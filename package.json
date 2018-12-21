@@ -58,7 +58,7 @@
     "chai": "4.1.2",
     "codecov": "3.0.4",
     "eslint": "5.3.0",
-    "eslint-config-space-single": "0.3.5",
+    "eslint-config-space-single": "0.3.11",
     "eslint-plugin-mocha": "5.1.0",
     "istanbul": "0.4.5",
     "jobs-service": "github:sammler/jobs-service",
