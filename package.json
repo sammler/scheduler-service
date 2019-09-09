@@ -41,7 +41,7 @@
   "dependencies": {
     "agenda": "2.0.0",
     "amqp-winston": "1.0.7",
-    "amqplib": "0.5.2",
+    "amqplib": "0.5.5",
     "amqplib-sugar": "0.4.2",
     "js-yaml": "3.13.1",
     "json-templater": "1.2.0",
