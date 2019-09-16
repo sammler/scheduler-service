@@ -51,7 +51,7 @@
     "sammler-nodelib-logger": "0.2.4",
     "superagent": "5.1.0",
     "superagent-promise": "1.1.0",
-    "uuid": "3.3.2",
+    "uuid": "3.3.3",
     "winster": "0.2.14"
   },
   "devDependencies": {
