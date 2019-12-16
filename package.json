@@ -39,7 +39,7 @@
     "test:unit": "npm run lint:test && mocha './test/unit/**/*.spec.js' --require './test/mocha.conf.js' --reporter 'mocha-junit-reporter'"
   },
   "dependencies": {
-    "agenda": "2.1.0",
+    "agenda": "2.3.0",
     "amqp-winston": "1.0.7",
     "amqplib": "0.5.5",
     "amqplib-sugar": "0.4.2",
