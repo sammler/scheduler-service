@@ -63,7 +63,7 @@
     "istanbul": "0.4.5",
     "jobs-service": "github:sammler/jobs-service",
     "mocha": "*",
-    "nyc": "14.1.1",
+    "nyc": "15.1.0",
     "sammler-base": "sammler/sammler-base"
   },
   "engines": {
