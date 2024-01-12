@@ -55,7 +55,7 @@
     "winster": "0.2.14"
   },
   "devDependencies": {
-    "chai": "4.2.0",
+    "chai": "4.4.1",
     "codecov": "3.5.0",
     "eslint": "5.16.0",
     "eslint-config-space-single": "0.3.11",
